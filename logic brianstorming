@@ -1,0 +1,25 @@
+tournament: {
+  players: []
+  rounds: {
+    games: {
+      team
+    }
+    ;[]
+  }
+  ;[]
+}
+type Player = {
+  name: string
+}
+type Team = {
+  players: Player[]
+}
+type Game = {
+  teams: [Team, Team]
+}
+type Round = {
+  games: Game[]
+}
+type Tournament = {
+  rounds: [Round, Round, Round]
+}

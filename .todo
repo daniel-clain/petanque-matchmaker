@@ -1,0 +1,11 @@
+Code:
+  ☐ no players with same namer, error handling
+  ☐ gracefully handle if players are deleted if they are in a tournament
+  ☐ mobile height scroll
+  ☐ round timer
+  ☐ allow game to finish without someone to 13, team with most points win
+  ☐ player score ranking view
+  
+
+Possible Features: 
+  ☐ way of marking if a tournment was called off
