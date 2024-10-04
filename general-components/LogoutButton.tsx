@@ -1,7 +1,8 @@
 import { useRouter } from 'expo-router'
 import { signOut } from 'firebase/auth'
-import { Button, View } from 'react-native'
+import { View } from 'react-native'
 import { auth } from '../firebaseConfig'
+import { Button_C } from './Button'
 
 export const LogoutButton = () => {
   const router = useRouter()
@@ -18,7 +19,7 @@ export const LogoutButton = () => {
 
   return (
     <View style={{ marginRight: 10 }}>
-      <Button title="Logout" onPress={handleLogout} />
+      <Button_C text="Logout" onPress={handleLogout} />
     </View>
   )
 }

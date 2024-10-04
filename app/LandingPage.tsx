@@ -2,10 +2,12 @@ import { Link, useFocusEffect } from 'expo-router'
 import { get, ref } from 'firebase/database'
 import { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
-import { withAdminAuth } from '../auth/RouteAuthWrapper'
 import { realtimeDB } from '../firebaseConfig'
+import { withPageWrapper } from '../hocs/PageWrapper'
+import { withAdminAuth } from '../hocs/RouteAuthWrapper'
+import { presetColors } from '../styles/colours'
 
-export default withAdminAuth(() => {
+function LandingPage() {
   const [tournamentStarted, setTournamentStarted] = useState(false)
   useFocusEffect(() => {
     const checkActiveTournament = async () => {
@@ -29,13 +31,14 @@ export default withAdminAuth(() => {
       </Link>
     </View>
   )
-})
+}
+export default withPageWrapper(withAdminAuth(LandingPage))
 
 const styles = StyleSheet.create({
   link: {
     fontSize: 16,
     paddingVertical: 6,
     paddingHorizontal: 8,
-    backgroundColor: '#9bcded',
+    backgroundColor: presetColors.button.base,
   },
 })

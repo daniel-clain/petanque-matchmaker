@@ -1,6 +1,6 @@
 import { useRootNavigationState, useRouter } from 'expo-router'
 import React, { useContext, useEffect } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { Text } from 'react-native'
 import { AppContext } from '../context/AppContext'
 
 export const withAdminAuth = (WrappedComponent: React.ComponentType) => {
@@ -19,22 +19,8 @@ export const withAdminAuth = (WrappedComponent: React.ComponentType) => {
     }, [user, router, resultState.routeNames])
 
     if (user === undefined) {
-      return (
-        <View style={styles.container}>
-          <Text>Loading...</Text>
-        </View>
-      )
+      return <Text>Loading...</Text>
     }
-    return (
-      <View style={styles.container}>
-        <WrappedComponent {...props} />
-      </View>
-    )
+    return <WrappedComponent {...props} />
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    padding: 10,
-  },
-})

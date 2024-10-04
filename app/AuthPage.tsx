@@ -5,11 +5,13 @@ import {
   signInWithEmailAndPassword,
 } from 'firebase/auth'
 import React, { useContext, useEffect, useState } from 'react'
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native'
+import { StyleSheet, Text, TextInput, View } from 'react-native'
 import { AppContext } from '../context/AppContext'
 import { auth } from '../firebaseConfig'
+import { Button_C } from '../general-components/Button'
+import { withPageWrapper } from '../hocs/PageWrapper'
 
-export default function AuthPage() {
+function AuthPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [isLogin, setIsLogin] = useState(true)
@@ -19,7 +21,7 @@ export default function AuthPage() {
   useEffect(() => {
     console.log('user', user)
     if (user) {
-      //router.replace('/LandingPage')
+      router.replace('/LandingPage')
     }
   }, [user, router])
 
@@ -55,20 +57,24 @@ export default function AuthPage() {
         onChangeText={setPassword}
         secureTextEntry
       />
-      <Button title={isLogin ? 'Log In' : 'Register'} onPress={handleSubmit} />
-      <Button
-        title={isLogin ? 'Switch to Register' : 'Switch to Log In'}
+
+      <Button_C text={isLogin ? 'Log In' : 'Register'} onPress={handleSubmit} />
+      <Button_C
+        text={isLogin ? 'Switch to Register' : 'Switch to Log In'}
         onPress={() => setIsLogin(!isLogin)}
       />
     </View>
   )
 }
 
+export default withPageWrapper(AuthPage)
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     padding: 16,
+    gap: 10,
   },
   header: {
     fontSize: 24,
@@ -79,7 +85,6 @@ const styles = StyleSheet.create({
     height: 40,
     borderColor: 'gray',
     borderWidth: 1,
-    marginBottom: 10,
     paddingHorizontal: 10,
   },
   error: {
